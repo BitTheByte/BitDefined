@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "BitDefined",
+    "version": "0.0.1",
+    "description": "Lists user defined javascript types",
+    "icons": {
+        "48": "src/images/main.png"
+    },
+    "browser_action": {
+        "default_popup": "src/views/popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["src/js/content.js"],
+            "run_at": "document_idle",
+            "all_frames": false
+        }
+    ],
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'; img-src * data: 'self' 'unsafe-eval'",
+    "offline_enabled": true,
+    "permissions": ["tabs", "<all_urls>", "activeTab"]
+}
